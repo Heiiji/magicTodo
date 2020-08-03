@@ -2,11 +2,13 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, SafeAreaView, View, Platform } from 'react-native';
 import Header from './src/components/_shared/Header';
+import TasksContainer from './src/components/TasksEpic/TasksContainer';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Header/>
+      <TasksContainer></TasksContainer>
     </SafeAreaView>
   );
 }
