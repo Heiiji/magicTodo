@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import TaskList from './TasksList';
 import TaskForm from './TaskForm';
+import CountersContainer from './CountersContainer';
 
 function TasksContainer(props) {
     const [tasks, setTasks] = useState([{
@@ -37,6 +38,7 @@ function TasksContainer(props) {
     return (
         <View>
             <TaskForm onAddTask={onAddTask}/>
+            <CountersContainer nbTasks={tasks.length} nbTasksCompleted={tasks.filter(task => task.completed).length} />
             <TaskList onChangeStatus={_onChangeStatus} onDeleteTask={_onDeleteTask} tasks={tasks} />
         </View>
     );
