@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCircle, faTrashAlt, faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 
 
-const TaskTiles = ({ item, onChangeStatus }) => {
+const TaskTiles = ({ item, onChangeStatus, onDeleteTask }) => {
     return <TouchableOpacity onPress={() => onChangeStatus(item.id)}>
         <View style={styles.container}>
             <View style={styles.subContainer}>
@@ -13,9 +13,11 @@ const TaskTiles = ({ item, onChangeStatus }) => {
                         <FontAwesomeIcon style={styles.icon} icon={faCheckCircle} size={25} color={"blue"} /> : 
                         <FontAwesomeIcon style={styles.icon} icon={faCircle} size={25} color={"blue"} />
                 }
-                <Text style={styles.title}>{ item.title }</Text>
+                <Text style={[styles.title, { color: item.completed ? 'lightgrey' : 'black' }]}>{ item.title }</Text>
             </View>
-            <FontAwesomeIcon style={styles.icon} icon={faTrashAlt} size={25} color={"blue"} />
+            <TouchableOpacity onPress={() => onDeleteTask(item.id)}>
+                <FontAwesomeIcon style={styles.icon} icon={faTrashAlt} size={25} color={"blue"} />
+            </TouchableOpacity>
         </View>
     </TouchableOpacity>;
 }
@@ -28,7 +30,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-around',
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: 5
     },
     subContainer: {
         flexDirection: 'row',

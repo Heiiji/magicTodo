@@ -29,10 +29,15 @@ function TasksContainer(props) {
         setTasks(newTasks);
     }
 
+    const _onDeleteTask = (id) => {
+        let newTasks = tasks.filter(task => task.id !== id);
+        setTasks(newTasks);
+    }
+
     return (
         <View>
             <TaskForm onAddTask={onAddTask}/>
-            <TaskList onChangeStatus={_onChangeStatus} tasks={tasks} />
+            <TaskList onChangeStatus={_onChangeStatus} onDeleteTask={_onDeleteTask} tasks={tasks} />
         </View>
     );
 }
