@@ -1,17 +1,23 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCircle, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+import { faCircle, faTrashAlt, faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 
 
-const TaskTiles = ({ item }) => {
-    return <View style={styles.container}>
-        <View style={styles.subContainer}>
-            <FontAwesomeIcon style={styles.icon} icon={faCircle} size={25} color={"blue"} />
-            <Text style={styles.title}>{ item.title }</Text>
+const TaskTiles = ({ item, onChangeStatus }) => {
+    return <TouchableOpacity onPress={() => onChangeStatus(item.id)}>
+        <View style={styles.container}>
+            <View style={styles.subContainer}>
+                {
+                    item.completed ? 
+                        <FontAwesomeIcon style={styles.icon} icon={faCheckCircle} size={25} color={"blue"} /> : 
+                        <FontAwesomeIcon style={styles.icon} icon={faCircle} size={25} color={"blue"} />
+                }
+                <Text style={styles.title}>{ item.title }</Text>
+            </View>
+            <FontAwesomeIcon style={styles.icon} icon={faTrashAlt} size={25} color={"blue"} />
         </View>
-        <FontAwesomeIcon style={styles.icon} icon={faTrashAlt} size={25} color={"blue"} />
-    </View>;
+    </TouchableOpacity>;
 }
 
 const styles = StyleSheet.create({
