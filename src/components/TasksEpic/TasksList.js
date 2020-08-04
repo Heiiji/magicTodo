@@ -6,7 +6,7 @@ const TasksList = ({ tasks, onChangeStatus, onDeleteTask }) => {
     return <FlatList
         data={tasks}
         renderItem={({ item }) => <TaskTiles onDeleteTask={onDeleteTask} onChangeStatus={onChangeStatus} item={item} />}
-        keyExtractor={item => item.id}
+        keyExtractor={item => `${item.id}`}
     />;
 }
 

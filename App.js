@@ -19,6 +19,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingTop: Platform.OS === 'android' ? 25 : 0,
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
+    marginLeft: 20,
+    marginRight: 20
   },
 });
