@@ -3,13 +3,17 @@ import React from 'react';
 import { StyleSheet, SafeAreaView, View, Platform } from 'react-native';
 import Header from './src/components/_shared/Header';
 import TasksContainer from './src/components/TasksEpic/TasksContainer';
+import {Provider} from 'react-redux';
+import store from './src/redux/store';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Header/>
-      <TasksContainer></TasksContainer>
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={styles.container}>
+        <Header/>
+        <TasksContainer></TasksContainer>
+      </SafeAreaView>
+    </Provider>
   );
 }
 

@@ -2,10 +2,21 @@ import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCircle, faTrashAlt, faCheckCircle } from '@fortawesome/free-regular-svg-icons';
+import {useDispatch} from 'react-redux';
+import { deleteTask, changeTaskStatus } from '../../redux/actions';
 
+const TaskTiles = ({ item }) => {
+    const dispatch = useDispatch();
 
-const TaskTiles = ({ item, onChangeStatus, onDeleteTask }) => {
-    return <TouchableOpacity onPress={() => onChangeStatus(item.id)}>
+    const _onDelete = id => {
+        dispatch(deleteTask(id));
+    }
+
+    const _onChangeStatus = id => {
+        dispatch(changeTaskStatus(id));
+    }
+
+    return <TouchableOpacity onPress={() => _onChangeStatus(item.id)}>
         <View style={styles.container}>
             <View style={styles.subContainer}>
                 {
@@ -15,7 +26,7 @@ const TaskTiles = ({ item, onChangeStatus, onDeleteTask }) => {
                 }
                 <Text style={[styles.title, { color: item.completed ? 'lightgrey' : 'black' }]}>{ item.title }</Text>
             </View>
-            <TouchableOpacity onPress={() => onDeleteTask(item.id)}>
+            <TouchableOpacity onPress={() => _onDelete(item.id)}>
                 <FontAwesomeIcon style={styles.icon} icon={faTrashAlt} size={25} color={"blue"} />
             </TouchableOpacity>
         </View>
