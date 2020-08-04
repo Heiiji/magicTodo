@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, Button } from 'react-native';
 
-const TaskForm = ({}) => {
+const TaskForm = ({ onAddTask }) => {
     const [title, setTitle] = useState("");
 
     const _onChangeText = (value) => {
@@ -9,7 +9,11 @@ const TaskForm = ({}) => {
     }
 
     const _onPressBtn = () => {
-
+        if (title.length < 1) {
+            return ;
+        }
+        onAddTask(title);
+        setTitle("");
     }
 
     return  <View style={styles.container}>

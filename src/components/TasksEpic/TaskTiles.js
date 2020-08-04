@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
     subContainer: {
         flexDirection: 'row',
         justifyContent: 'flex-start',
-        alignItems: "center"
+        alignItems: "center",
+        width: '80%'
     },
     title: {
         marginLeft: 10
