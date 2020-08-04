@@ -1,8 +1,13 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Text } from 'react-native';
+import TaskTiles from './TaskTiles';
 
-function TasksList(props) {
-
+const TasksList = ({ tasks }) => {
+    return <FlatList
+        data={tasks}
+        renderItem={({ item }) => <TaskTiles item={item} />}
+        keyExtractor={item => item.title}
+    />;
 }
 
 export default TasksList;

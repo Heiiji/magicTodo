@@ -3,7 +3,7 @@ import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
 import moment from 'moment';
 
 export default function Header() {
-    const date = new Date();
+    moment.locale('fr');
     return  (
         <View style={styles.container}>
             <Text style={styles.title}>{moment().format('MMMM Do YYYY')}</Text>
